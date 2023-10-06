@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundCloud Music For Life</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <script src="./assets/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Welcome -->
+    <div class="heading">
+        <div class="heading-logo"><i class="fa-solid fa-headphones"></i> SoundCloud <i class="fa-brands fa-soundcloud"></i></div>
+    </div>
+    <div class="container">
+        <div class="body-content">
+            <div class="left-box">
+                <!-- Player -->
+                <div class="player">
+                    <div class="dashboard">
+                        <!-- Heading Dash -->
+                        <header>
+                            <h4>Now Playing</h4>
+                            <h2>Song: Null</h2>
+                            <h3>Artists: Thương Ngân</h3>
+                        </header>
+                        <!-- Đĩa CD -->
+                        <div class="cd">
+                            <div class="cd_thumb" style="background-image: url(./assets/img/song1.webp);"></div>
+                        </div>
+                        <!-- Control_Chức năng -->
+                        <div class="control-2">
+                            <div class="volume-control">
+                                <i class="fa-solid fa-volume-xmark"></i>
+                                <i class="fa-solid fa-volume-high"></i>
+                            </div>
+                            <div class="box-2">
+                                <i class="fa-solid fa-heart"></i>
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                       
+                        <div class="audio-bar">
+                            <div class="currentTime">1</div>
+                            <div class="timeline"><div class="timeline-bar"></div></div>
+                            <div class="totalTime">2</div>
+                        </div>
+                        <audio id="audio" src=""></audio>
+                    </div>
+                </div>
+            </div>
+            <div class="right-box">
+                <div class="play-list">
+                    <!-- Heading tabs -->
+                    <div class="tabs">
+                        <div class="tab-item active">
+                            <i class="fa-solid fa-list-ol"></i> Playlist
+                        </div>
+                        <div class="tab-item">
+                            <i class="fa-solid fa-music"></i> Lyric
+                        </div>
+                        <div class="tab-item">
+                            <i class="fa-regular fa-copyright"></i> Version 1.0.2
+                        </div>
+                        <div class="tab-item">
+                            <i class="fa-regular fa-user"></i> Author
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-1"></div>
+                        <div class="tab-pane" id="tab-2"></div>
+                        <div class="tab-pane" id="tab-3">
+                            <h1>Thông tin dự án</h1>
+                            <div id="project-details"></div>
+                        </div>
+                        <div class="tab-pane" id="tab-4"></div>
+                    </div>
+                    <!-- End tabs -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div id="row-time"></div>
+        <div class="row-toggle">
+            <i class="fa-regular fa-sun"></i>
+            <div class="toggle-switch">
+                <input type="checkbox" id="switch" />
+                <label for="switch"></label>
+            </div>
+        </div>
+        <div id="row-control">
+            <div class="control-row">
+                <div class="btn btn_repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
+                <div class="btn btn_prev">
+                    <i class="fa-solid fa-backward-step"></i>
+                </div>
+                <div class="btn btn-toggle-play">
+                    <i class="fa-regular fa-circle-pause"></i>
+                    <i class="fa-regular fa-circle-play"></i>
+                </div>
+                <div class="btn btn_next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </div>
+                <div class="btn btn_random">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+        </div>
+        <div id="row-wrapper">
+            <i class="fa-solid fa-circle-user"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-github"></i>
+        </div>
+    </div>
+</body>
+
+<script>
+    function updateClock() {
+        const date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours < 10 ? '0'+hours : hours;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = `${hours}:${minutes} ${ampm}`;
+        // Cập nhật thời gian vào một phần tử HTML
+        const clockElement = document.getElementById('row-time');
+        clockElement.innerHTML = strTime;
+    }
+    // Cập nhật thời gian mỗi giây
+    setInterval(updateClock, 1000);
+    
+</script>
+
+</html>
